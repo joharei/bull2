@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1 class="page-header">Medlemmer</h1>
+    <table class="table">
+    <thead>
+    <tr>
+        <th>Navn</th>
+        <th>E-post</th>
+        <th>Telefon</th>
+        <th>Grupper</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for member in object_list %}
+        <tr>
+            <td><a href="{% url 'members:detail' member.pk %}">{{ member.get_full_name }}</a></td>
+            <td>{{ member.email }}</td>
+            <td>{{ member.phone_number }}</td>
+            <td>
+                {% for group in member.groups.all %}
+                    <a href="{% url 'members:group-detail' group.id %}">
+                        {{ group.name }}
+                    </a>
+                    {% if not forloop.last %}|{% endif %}
+                {% endfor %}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+{% endblock %}

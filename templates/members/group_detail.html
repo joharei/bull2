@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>{{ object.name }}</h1>
+    <p>Er en gruppe</p>
+    <h3>Medlemmer:</h3>
+    <ul>
+    {% for member in group.users.all %}
+        <li><a href="{% url 'members:detail' member.id %}">{{ member.get_full_name }}</a></li>
+    {% endfor %}
+    </ul>
+{% endblock %}

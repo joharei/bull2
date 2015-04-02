@@ -1,10 +1,12 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import include, url
 from django.contrib import admin
+from bull.views import HomePageView
 
-urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'bull.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
+admin.site.site_header = 'Låfteweb-administrasjon'
+admin.site.site_title = 'Låfteweb-admin'
 
+urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-)
+    url(r'^members/', include('members.urls', namespace='members')),
+    url(r'^$', HomePageView.as_view(), name='home')
+]

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1 class="page-header">Grupper</h1>
+    <table class="table">
+    <thead>
+    <tr>
+        <th>Navn</th>
+    </tr>
+    </thead>
+        <tbody>
+        {% for group in object_list %}
+            <tr><td><a href="{% url 'members:group-detail' group.id %}">{{ group.name }}</a></td></tr>
+        {% endfor %}
+    </tbody>
+    </table>
+{% endblock %}
