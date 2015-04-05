@@ -44,6 +44,7 @@ THIRD_PARTY_APPS = [
 
 BULL_APPS = [
     'members',
+    'ovingsspeilet',
 ]
 
 INSTALLED_APPS = DEFAULT_APPS + THIRD_PARTY_APPS + BULL_APPS

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block extra_head %}
+    <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.3.1/fullcalendar.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block extra_scripts %}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.3.1/fullcalendar.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.3.1/lang/nb.js"></script>
+    <script type='text/javascript'>
+        $(document).ready(function () {
+            $('#calendar').fullCalendar({
+                // put your options and callbacks here
+                timezone: 'Europe/Oslo',
+                defaultView: 'agendaWeek',
+                {#                events: '/schedule/api/occurrences?calendar_slug=ovingsspeilet'#}
+            })
+
+        });
+    </script>
+{% endblock %}
+
+{% block content %}
+    <h1 class="page-header">Øvingsspeilet</h1>
+    <div id="calendar"></div>
+{% endblock %}
