@@ -7,8 +7,8 @@ class Event(models.Model):
     title = models.CharField(max_length=40, verbose_name='tittel')
     description = models.TextField(max_length=10000, blank=True, verbose_name='beskrivelse')
     created = models.DateTimeField(auto_now_add=True)
-    date_start = models.DateField(verbose_name='starttidspunkt')
-    date_end = models.DateField(verbose_name='sluttidspunkt')
+    date_start = models.DateTimeField(verbose_name='starttidspunkt')
+    date_end = models.DateTimeField(verbose_name='sluttidspunkt')
     creator = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True, verbose_name='opprettet av')
     weekly = models.BooleanField(default=False, verbose_name='ukentlig', help_text='Repeter ukentlig.')
     admin_event = models.BooleanField(default=False, verbose_name='adminaktivitet',
@@ -34,7 +34,7 @@ class Event(models.Model):
 
 
 class EventAdmin(admin.ModelAdmin):
-    list_display = ["creator", "date_start", "title", "description"]
+    list_display = ["title", "date_start", "description", "creator"]
     list_filter = ["creator"]
 
 
